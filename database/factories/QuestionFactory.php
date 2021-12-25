@@ -13,8 +13,15 @@ class QuestionFactory extends Factory
      */
     public function definition()
     {
-        return [
-            //
-        ];
+        $title=$this->sentence;
+        $slug=Str::slug($title);
+                return [
+                    'title'=>$title,
+                    'slug'=> $slug,
+                    'body'=>$title,
+                    'category_id'=>Category::factory(),
+                    'user_id'=>User::factory(),
+                    'title'=>$title,
+                ];
     }
 }

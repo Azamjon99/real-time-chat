@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Question;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class ReplyFactory extends Factory
@@ -13,8 +15,12 @@ class ReplyFactory extends Factory
      */
     public function definition()
     {
+        $title=$this->sentence;
+
         return [
-            //
+            'body'=>$title,
+            'question_id'=>Question::factory(),
+            'user_id'=>User::factory(),
         ];
     }
 }

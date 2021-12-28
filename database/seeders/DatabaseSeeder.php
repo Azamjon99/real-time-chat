@@ -1,7 +1,11 @@
 <?php
 
 namespace Database\Seeders;
-
+use App\Models\User;
+use App\Models\Category;
+use App\Models\Like;
+use App\Models\Question;
+use App\Models\Reply;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -13,6 +17,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+       User::factory(10)->create();
+       Reply::factory(10)->create();
+
+       Category::factory(10)->create();
+
+       Like::factory(10)->create();
+       Question::factory(10)->create();
     }
 }

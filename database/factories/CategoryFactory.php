@@ -4,6 +4,8 @@ namespace Database\Factories;
 
 use App\Models\Category;
 use App\Models\User;
+use Illuminate\Support\Str;
+
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class CategoryFactory extends Factory
@@ -15,12 +17,12 @@ class CategoryFactory extends Factory
      */
     public function definition()
     {
-        $title=$this->word;
+        $title=$this->faker->word;
         $slug=Str::slug($title);
         return [
             'name'=>$title,
             'slug'=> $slug,
-         
+
         ];
     }
 }

@@ -2,7 +2,10 @@
 
 namespace Database\Factories;
 
+use App\Models\Category;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 class QuestionFactory extends Factory
 {
@@ -13,7 +16,7 @@ class QuestionFactory extends Factory
      */
     public function definition()
     {
-        $title=$this->sentence;
+        $title=$this->faker->sentence;
         $slug=Str::slug($title);
                 return [
                     'title'=>$title,

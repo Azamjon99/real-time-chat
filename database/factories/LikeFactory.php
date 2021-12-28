@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Reply;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class LikeFactory extends Factory
@@ -15,7 +17,8 @@ class LikeFactory extends Factory
     {
         return [
             'user_id'=>User::factory(),
-            
+            'reply_id'=>Reply::factory(),
+
         ];
     }
 }

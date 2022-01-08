@@ -36,6 +36,7 @@ Vue.component('AppHome', require('./components/AppHome.vue').default);
 
 const app = new Vue({
     el: '#app',
+    router,
       vuetify: new Vuetify()
 
 });

@@ -9,6 +9,11 @@ use Symfony\Component\HttpFoundation\Response;
 
 class QuestionController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('jwt')->except('login', 'signup');
+    }
+
     /**
      * Display a listing of the resource.
      *

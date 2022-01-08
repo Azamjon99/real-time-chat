@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class AuthController extends Controller
@@ -9,7 +10,7 @@ class AuthController extends Controller
 
     public function __construct()
     {
-        $this->middleware('jwt', ['except' => ['login']]);
+        $this->middleware('jwt')->except('login', 'signup');
     }
 
     /**
@@ -79,5 +80,11 @@ class AuthController extends Controller
     public function payload()
     {
         return auth()->payload();
+    }
+
+    public function signup(Request $request)
+    {
+        User::create($request->all());
+        return $this->login($request);
     }
 }

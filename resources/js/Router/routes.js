@@ -10,7 +10,9 @@ const routes = [
   ]
 
   const router = new VueRouter({
-    routes
+    routes,
+    hashbang:false,
+    mode : "history"
   })
 
 //   const app = new Vue({

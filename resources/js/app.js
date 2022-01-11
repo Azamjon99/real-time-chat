@@ -13,7 +13,8 @@ import Vuetify from 'vuetify';
 import 'vuetify/dist/vuetify.min.css';
 import User from './Helpers/User'
 window.User= User;
-// console.log(User.id());
+window.EventBus= new Vue();
+// console.log(User.loggedIn());
 
 Vue.use(Vuetify)
 

@@ -11,7 +11,7 @@ class QuestionController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('jwt')->except('login', 'signup');
+        $this->middleware('jwt')->except('index', 'show');
     }
 
     /**

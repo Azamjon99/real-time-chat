@@ -15,6 +15,7 @@ class User {
         console.log(access_token);
 
             AppStorage.store(username, access_token)
+            window.location = '/forum'
         }
 
     }
@@ -29,11 +30,13 @@ class User {
         return false
     }
     loggedIn(){
-        return this.hasToken()
+        return this.hasToken();
     }
 
     logout(){
         AppStorage.clear()
+        window.location = '/forum'
+
     }
     name(){
         if(this.loggedIn()){
@@ -45,6 +48,13 @@ class User {
             const payload = Token.payload(AppStorage.getToken())
             return payload.sub
         }
+    }
+
+    signup(data, errors){
+        axios.post('/api/auth/signup', data)
+                    .then(res => this.responseAfterLogin(res))
+                    .catch(error => errors = error.response.data.errors)
+
     }
 }
 

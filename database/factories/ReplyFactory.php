@@ -15,7 +15,7 @@ class ReplyFactory extends Factory
      */
     public function definition()
     {
-        $title=$this->sentence;
+        $title=$this->faker->sentence;
 
         return [
             'body'=>$title,

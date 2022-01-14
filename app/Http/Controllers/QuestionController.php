@@ -2,11 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\QuestionResource;
 use App\Models\Question;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class QuestionController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('jwt')->except('index', 'show');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +21,7 @@ class QuestionController extends Controller
      */
     public function index()
     {
-        //
+        return QuestionResource::collection(Question::latest()->get());
     }
 
     /**
@@ -35,7 +42,9 @@ class QuestionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Question::create($request->all());
+        return response('created', Response::HTTP_CREATED);
+
     }
 
     /**
@@ -46,7 +55,7 @@ class QuestionController extends Controller
      */
     public function show(Question $question)
     {
-        //
+        return $question;
     }
 
     /**
@@ -69,7 +78,8 @@ class QuestionController extends Controller
      */
     public function update(Request $request, Question $question)
     {
-        //
+        $question->update($request->all());
+        return response('updated', Response::HTTP_ACCEPTED);
     }
 
     /**
@@ -80,6 +90,8 @@ class QuestionController extends Controller
      */
     public function destroy(Question $question)
     {
-        //
+        $question->reply()->delete();
+        $question->delete();
+        return response('deleted', Response::HTTP_NO_CONTENT);
     }
 }
